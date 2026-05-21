@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YẾN SÀO VIN NEST – Thiên Nhiên · Thuần Khiết · Tận Tâm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cinzel:wght@400;500;600;700;900&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Gold – nổi bật cho chi tiết quan trọng */
+    --gold-deep:    #A07820;
+    --gold-mid:     #D4A835;
+    --gold-bright:  #F0C842;
+    --gold-pale:    #FBF0C0;
+    --gold-shine:   #FEFAED;
+
+    /* Xanh lá – tươi, thiên nhiên */
+    --green-deep:   #1A4020;
+    --green-dark:   #2A5C30;
+    --green-mid:    #3A8040;
+    --green-bright: #52A858;
+    --green-light:  #7DC882;
+    --green-pale:   #E8F7EA;
+
+    /* Xanh biển / bầu trời */
+    --sky-deep:     #0E3A5C;
+    --sky-dark:     #1A5278;
+    --sky-mid:      #2878A8;
+    --sky-bright:   #3FA0D8;
+    --sky-light:    #7CC4EE;
+    --sky-pale:     #E4F4FC;
+
+    /* Nền sáng tổng thể */
+    --bg-main:      #F2F9F3;
+    --bg-section:   #FFFFFF;
+    --bg-alt:       #EAF6EC;
+    --bg-dark:      #1E4D28;
+
+    --text-dark:    #1A2E1C;
+    --text-body:    #2E4A32;
+    --text-muted:   #6B9070;
+    --text-light:   #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-main);
+    color: var(--text-body);
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+  }
+
+  /* ════════════════════════════════
+      TOPBAR
+  ════════════════════════════════ */
+  .topbar {
+    background: var(--green-deep);
+    border-bottom: 1px solid rgba(212,168,53,0.3);
+    padding: 8px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.75);
+  }
+  .topbar a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color .2s; }
+  .topbar a:hover { color: var(--gold-bright); }
+  .topbar-left { display: flex; gap: 24px; }
+  .topbar-right { display: flex; gap: 20px; }
+
+  /* ════════════════════════════════
+      NAVBAR
+  ════════════════════════════════ */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(16px);
+    border-bottom: 2px solid rgba(212,168,53,0.3);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 2px 24px rgba(52,168,88,0.08);
+  }
+
+  .logo-wrap {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .logo-vin {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-mid), var(--gold-bright), var(--gold-mid));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.12em;
+  }
+  .logo-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.35em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 36px;
+  }
+  .nav-links a {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-body);
+    text-decoration: none;
+    transition: color .25s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold-bright);
+    transition: width .3s;
+  }
+  .nav-links a:hover { color: var(--green-mid); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-actions { display: flex; align-items: center; gap: 20px; }
+  .btn-cart {
+    background: linear-gradient(135deg, var(--gold-deep), var(--gold-mid));
+    color: var(--ocean-dark);
+    border: none;
+    padding: 10px 24px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .3s;
+  }
+  .btn-cart:hover {
+    background: linear-gradient(135deg, var(--gold-mid), var(--gold-bright));
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+  }
+
+  /* ════════════════════════════════
+      HERO
+  ════════════════════════════════ */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1A5230 0%, #1E6845 25%, #1A5278 60%, #0E3A5C 100%);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    width: 700px; height: 700px;
+    right: -80px; top: -150px;
+    background: radial-gradient(ellipse, rgba(63,160,216,0.25) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    left: 100px; bottom: -80px;
+    background: radial-gradient(ellipse, rgba(82,168,88,0.2) 0%, transparent 70%);
+    animation: pulse 10s ease-in-out infinite reverse;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50% { transform: scale(1.15) rotate(5deg); opacity: 0.7; }
+  }
+
+  /* Gold ornament lines */
+  .hero-ornament {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 52%;
+    border-left: 1px solid rgba(201,168,76,0.15);
+    pointer-events: none;
+  }
+  .hero-ornament::before {
+    content: '';
+    position: absolute;
+    left: 40px; top: 0; bottom: 0;
+    border-left: 1px solid rgba(201,168,76,0.06);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-text { animation: fadeUp 1s ease both; }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(40px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--gold-mid);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero-badge::before, .hero-badge::after {
+    content: '';
+    display: block;
+    width: 36px; height: 1px;
+    background: var(--gold-mid);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    color: var(--text-light);
+  }
+  .hero-title strong {
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--gold-mid), var(--gold-bright));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+
+  .hero-pillars {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .hero-pillar {
+    font-family: 'Cinzel', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    color: var(--sky-light);
+    text-transform: uppercase;
+    position: relative;
+    padding-left: 12px;
+  }
+  .hero-pillar::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold-mid);
+    font-size: 6px;
+    top: 2px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold-deep), var(--gold-mid));
+    color: var(--ocean-dark);
+    border: none;
+    padding: 16px 36px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--gold-mid), var(--gold-bright));
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(201,168,76,0.35);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--gold-mid);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 16px 36px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold-mid);
+    background: rgba(201,168,76,0.08);
+    transform: translateY(-2px);
+  }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  /* Decorative ring */
+  .hero-ring {
+    position: absolute;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.15);
+    animation: spin 30s linear infinite;
+  }
+  .hero-ring::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.08);
+  }
+  .hero-ring::after {
+    content: '◆';
+    position: absolute;
+    top: -8px; left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold-mid);
+    font-size: 14px;
+  }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .hero-img-wrap {
+    width: 340px; height: 440px;
+    overflow: hidden;
+    position: relative;
+    clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 15% 100%, 0 85%);
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .hero-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85) saturate(1.1);
+    transition: transform 6s ease;
+  }
+  .hero-img-wrap:hover img { transform: scale(1.04); }
+
+  /* ════════════════════════════════
+      FEATURES STRIP
+  ════════════════════════════════ */
+  .features-strip {
+    background: linear-gradient(90deg, var(--green-pale), var(--sky-pale), var(--green-pale));
+    border-top: 2px solid rgba(212,168,53,0.25);
+    border-bottom: 2px solid rgba(212,168,53,0.25);
+    padding: 32px 40px;
+  }
+  .features-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 32px;
+    border-right: 1px solid rgba(52,168,88,0.2);
+  }
+  .feature-item:first-child { padding-left: 0; }
+  .feature-item:last-child { border-right: none; }
+  .feature-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+  .feature-title {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .feature-desc {
+    font-size: 12px;
+    color: var(--text-body);
+    line-height: 1.5;
+  }
+
+  /* ════════════════════════════════
+      SECTION COMMONS
+  ════════════════════════════════ */
+  section {
+    padding: 100px 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .section-full { max-width: 100%; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+  .section-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--sky-mid);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .section-eyebrow::before, .section-eyebrow::after {
+    content: '──────';
+    color: rgba(40,120,168,0.3);
+    letter-spacing: -0.1em;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 58px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+  }
+  .section-title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--green-mid);
+  }
+  .section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .section-divider::before, .section-divider::after {
+    content: '';
+    width: 80px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-mid));
+  }
+  .section-divider::after {
+    background: linear-gradient(to left, transparent, var(--gold-mid));
+  }
+  .divider-gem { color: var(--gold-bright); font-size: 10px; }
+
+  /* ════════════════════════════════
+      ABOUT BAND
+  ════════════════════════════════ */
+  .about-band {
+    background: linear-gradient(160deg, var(--green-pale) 0%, #EAF5FB 50%, var(--sky-pale) 100%);
+    padding: 100px 40px;
+    border-top: 1px solid rgba(52,168,88,0.12);
+    border-bottom: 1px solid rgba(40,120,168,0.12);
+  }
+  .about-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-img-stack {
+    position: relative;
+    height: 500px;
+  }
+  .about-img-main {
+    position: absolute;
+    right: 0; top: 0;
+    width: 75%; height: 85%;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 12% 100%);
+  }
+  .about-img-main img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) saturate(1.15);
+  }
+  .about-img-accent {
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 52%; height: 52%;
+    overflow: hidden;
+    border: 2px solid rgba(201,168,76,0.3);
+  }
+  .about-img-accent img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.75) saturate(1.2);
+  }
+  .about-img-gold-line {
+    position: absolute;
+    right: -1px; top: -40px;
+    width: 1px; height: 100px;
+    background: linear-gradient(to bottom, transparent, var(--gold-mid), transparent);
+  }
+
+  .about-text p {
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--text-body);
+    margin-bottom: 20px;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(212,168,53,0.25);
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--green-mid);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--sky-mid);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* ════════════════════════════════
+      PRODUCTS
+  ════════════════════════════════ */
+  .products-section {
+    background: var(--bg-main);
+    padding: 100px 40px;
+  }
+  .products-inner { max-width: 1280px; margin: 0 auto; }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .product-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--green-pale);
+    aspect-ratio: 3/4;
+    cursor: pointer;
+    group: true;
+  }
+  .product-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.7) saturate(1.1);
+  }
+  .product-card:hover img { transform: scale(1.08); filter: brightness(0.6) saturate(1.3); }
+
+  .product-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(4,14,30,0.95) 0%, rgba(4,14,30,0.3) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+    transition: all 0.4s;
+  }
+  .product-cat {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--gold-mid);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--text-light);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .product-desc {
+    font-size: 13px;
+    color: rgba(248,244,236,0.65);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.4s 0.1s;
+  }
+  .product-card:hover .product-desc { opacity: 1; transform: translateY(0); }
+  .product-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.4s 0.15s;
+  }
+  .product-btn::after { content: '→'; transition: transform 0.3s; }
+  .product-btn:hover::after { transform: translateX(4px); }
+  .product-card:hover .product-btn { opacity: 1; transform: translateY(0); }
+
+  /* Featured card */
+  .product-card.featured {
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+
+  /* ════════════════════════════════
+      BENEFITS
+  ════════════════════════════════ */
+  .benefits-bg {
+    background: linear-gradient(180deg, #EAF5F0 0%, #E4F4FC 100%);
+    padding: 100px 40px;
+    border-top: 1px solid rgba(52,168,88,0.12);
+  }
+  .benefits-inner { max-width: 1280px; margin: 0 auto; }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(40,120,168,0.1);
+    margin-top: 60px;
+  }
+  .benefit-card {
+    background: #FFFFFF;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s;
+  }
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(to right, var(--green-bright), var(--sky-bright));
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .benefit-card:hover { background: var(--green-pale); }
+  .benefit-card:hover::before { opacity: 1; }
+
+  .benefit-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    font-weight: 300;
+    color: rgba(52,168,88,0.07);
+    line-height: 1;
+    position: absolute;
+    top: 16px; right: 24px;
+  }
+  .benefit-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .benefit-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .benefit-text {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.75;
+  }
+
+  /* ════════════════════════════════
+      BLOG
+  ════════════════════════════════ */
+  .blog-section {
+    background: var(--bg-section);
+    padding: 100px 40px;
+    border-top: 1px solid rgba(40,120,168,0.1);
+  }
+  .blog-inner { max-width: 1280px; margin: 0 auto; }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 2px;
+  }
+  .blog-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-alt);
+    cursor: pointer;
+  }
+  .blog-card-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    filter: brightness(0.85) saturate(1.0);
+    transition: all 0.6s;
+  }
+  .blog-card:hover .blog-card-img { transform: scale(1.05); filter: brightness(0.75) saturate(1.1); }
+  .blog-card-body { padding: 28px 28px 32px; }
+  .blog-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 0.3em;
+    color: var(--sky-mid);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .blog-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--text-dark);
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+  .blog-excerpt {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .blog-link {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--gold-deep);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    font-weight: 600;
+  }
+  .blog-link:hover { color: var(--green-mid); }
+
+  .blog-card.featured .blog-card-img { height: 340px; }
+  .blog-card.featured .blog-title { font-size: 24px; }
+
+  /* ════════════════════════════════
+      CTA BAND
+  ════════════════════════════════ */
+  .cta-band {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--sky-dark) 100%);
+    padding: 100px 40px;
+    text-align: center;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(240,200,66,0.06), transparent 60%, rgba(63,160,216,0.1));
+  }
+  .cta-band::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--green-bright), var(--gold-bright), var(--sky-bright));
+  }
+  .cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 4.5vw, 64px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+  .cta-title em { font-style: italic; font-weight: 500; color: var(--gold-bright); }
+  .cta-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+  .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+  /* ════════════════════════════════
+      CONTACT / NEWSLETTER
+  ════════════════════════════════ */
+  .newsletter-bg {
+    background: var(--green-pale);
+    border-top: 1px solid rgba(52,168,88,0.2);
+    border-bottom: 1px solid rgba(52,168,88,0.2);
+    padding: 60px 40px;
+  }
+  .newsletter-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .newsletter-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--green-dark);
+    margin-bottom: 6px;
+  }
+  .newsletter-text p {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .newsletter-form {
+    display: flex;
+    gap: 0;
+    flex: 1;
+    max-width: 500px;
+  }
+  .newsletter-form input {
+    flex: 1;
+    background: #fff;
+    border: 1px solid rgba(52,168,88,0.3);
+    border-right: none;
+    padding: 14px 20px;
+    color: var(--text-dark);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .newsletter-form input::placeholder { color: var(--text-muted); }
+  .newsletter-form input:focus { border-color: var(--green-mid); }
+  .newsletter-form button {
+    background: linear-gradient(135deg, var(--gold-deep), var(--gold-mid));
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .newsletter-form button:hover {
+    background: linear-gradient(135deg, var(--gold-mid), var(--gold-bright));
+  }
+
+  /* ════════════════════════════════
+      FOOTER
+  ════════════════════════════════ */
+  footer {
+    background: var(--green-deep);
+    border-top: 2px solid rgba(212,168,53,0.3);
+    padding: 80px 40px 40px;
+  }
+  .footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  .footer-brand .logo-vin { font-size: 18px; }
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin: 12px 0 24px;
+    line-height: 1.7;
+  }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+  .contact-icon { color: var(--gold-bright); flex-shrink: 0; margin-top: 1px; }
+
+  .footer-col h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(212,168,53,0.2);
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold-bright); }
+
+  .social-links { display: flex; gap: 12px; margin-top: 24px; }
+  .social-link {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(212,168,53,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.3s;
+  }
+  .social-link:hover {
+    border-color: var(--gold-bright);
+    color: var(--gold-bright);
+    background: rgba(212,168,53,0.1);
+  }
+
+  .footer-bottom {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 32px;
+    border-top: 1px solid rgba(212,168,53,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+  .footer-cert {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--gold-mid);
+    text-transform: uppercase;
+  }
+
+  /* ════════════════════════════════
+      SCROLL ANIMATIONS
+  ════════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ════════════════════════════════
+      SCROLLBAR
+  ════════════════════════════════ */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--ocean-dark); }
+  ::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(201,168,76,0.6); }
+
+  /* ════════════════════════════════
+      MOBILE
+  ════════════════════════════════ */
+  @media (max-width: 900px) {
+    .topbar { display: none; }
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero-content { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { order: -1; }
+    .hero-img-wrap { width: 280px; height: 360px; }
+    .hero-ring { width: 340px; height: 340px; }
+    .features-grid { grid-template-columns: 1fr 1fr; }
+    .feature-item:nth-child(2) { border-right: none; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-img-stack { height: 320px; }
+    .products-grid { grid-template-columns: 1fr; }
+    .product-card.featured { grid-row: auto; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .newsletter-inner { flex-direction: column; align-items: flex-start; }
+    section, .about-band, .products-section, .benefits-bg, .blog-section, .cta-band, footer { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 108 Trần Đình Xu, Q.1, TP.HCM</span>
+    <a href="tel:0783332793">📞 078 333 27 93</a>
+    <a href="mailto:vinnest.vn@gmail.com">✉ vinnest.vn@gmail.com</a>
+  </div>
+  <div class="topbar-right">
+    <a href="/lien-he/index.html">Đăng nhập</a>
+    <a href="/lien-he/index.html">Đăng ký</a>
+    <a href="https://www.facebook.com/vinnest.vn" target="_blank">Facebook</a>
+    <a href="https://zalo.me/0783332793" target="_blank">Zalo</a>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo-wrap">
+    <span class="logo-vin">VIN NEST</span>
+    <span class="logo-sub">Yến Sào Khánh Hoà · Phú Yên</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/index.html">Trang chủ</a></li>
+    <li><a href="/san-pham/index.html">Sản phẩm</a></li>
+    <li><a href="/gioi-thieu/index.html">Về Vin Nest</a></li>
+    <li><a href="/tin-tuc/index.html">Tin tức</a></li>
+    <li><a href="/lien-he/index.html">Liên hệ</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="/lien-he/index.html" class="btn-cart">Giỏ Hàng</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">Yến Sào Thượng Hạng</div>
+      <h1 class="hero-title">
+        Tổ Yến<br>
+        <strong>Vin Nest</strong>
+        Khánh Hoà
+      </h1>
+      <p class="hero-tagline">
+        "Tổ yến cho tổ ấm trọn vẹn —<br>
+        Đồng hành cùng sức khỏe và thanh xuân người Việt."
+      </p>
+      <div class="hero-pillars">
+        <span class="hero-pillar">Thiên Nhiên</span>
+        <span class="hero-pillar">Thuần Khiết</span>
+        <span class="hero-pillar">Tận Tâm</span>
+      </div>
+      <div class="hero-cta">
+        <a href="/san-pham/index.html" class="btn-primary">Mua Sắm Ngay</a>
+        <a href="/gioi-thieu/index.html" class="btn-outline">Tìm Hiểu Thêm</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-ring"></div>
+      <div class="hero-img-wrap">
+        <img src="https://yensaovinnest.com.vn/datafiles/33257/upload/images/NEW/MAU%201.jpg"
+             alt="Yến sào Vin Nest"
+             onerror="this.src='https://yensaovinnest.com.vn/datafiles/33257/upload/images/VNG%2002.png'">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES STRIP -->
+<div class="features-strip">
+  <div class="features-grid">
+    <div class="feature-item reveal">
+      <div class="feature-icon">🏆</div>
+      <div>
+        <div class="feature-title">Chất Lượng Thượng Hạng</div>
+        <div class="feature-desc">100% yến sào thiên nhiên Khánh Hoà, Phú Yên</div>
+      </div>
+    </div>
+    <div class="feature-item reveal reveal-delay-1">
+      <div class="feature-icon">🚚</div>
+      <div>
+        <div class="feature-title">Miễn Phí Vận Chuyển</div>
+        <div class="feature-desc">Giao hàng tận nơi toàn quốc</div>
+      </div>
+    </div>
+    <div class="feature-item reveal reveal-delay-2">
+      <div class="feature-icon">📞</div>
+      <div>
+        <div class="feature-title">Hỗ Trợ 24/7</div>
+        <div class="feature-desc">Đội ngũ tư vấn nhiệt tình, tận tâm</div>
+      </div>
+    </div>
+    <div class="feature-item reveal reveal-delay-3">
+      <div class="feature-icon">🛡</div>
+      <div>
+        <div class="feature-title">Cam Kết Chính Hãng</div>
+        <div class="feature-desc">GPDKKD: 0316816034 — Sở KH &amp; ĐT TP.HCM</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT SECTION -->
+<div class="about-band">
+  <div class="about-inner">
+    <div class="about-img-stack reveal">
+      <div class="about-img-main">
+        <img src="https://yensaovinnest.com.vn/datafiles/33257/upload/images/NEW/MAU%20.jpg"
+             alt="Tổ yến Vin Nest"
+             onerror="this.src='https://yensaovinnest.com.vn/datafiles/33257/upload/images/VNG%2002.png'">
+      </div>
+      <div class="about-img-accent">
+        <img src="https://yensaovinnest.com.vn/datafiles/33257/upload/thumb_images/NEW/MKT.jpg"
+             alt="Yến sào thiên nhiên"
+             onerror="this.src='https://yensaovinnest.com.vn/datafiles/33257/upload/images/VNG%2002.png'">
+      </div>
+      <div class="about-img-gold-line"></div>
+    </div>
+    <div class="about-text reveal reveal-delay-2">
+      <div class="section-eyebrow">Câu Chuyện Của Chúng Tôi</div>
+      <h2 class="section-title">Tinh Hoa <em>Từ Thiên Nhiên</em></h2>
+      <div class="section-divider"><span class="divider-gem">◆</span></div>
+      <br><br>
+      <p>
+        Vin Nest được thành lập với sứ mệnh mang đến những sản phẩm yến sào thuần khiết nhất từ vùng biển Khánh Hoà và Phú Yên — hai vùng yến nổi tiếng bậc nhất Việt Nam.
+      </p>
+      <p>
+        Mỗi tổ yến được chắt lọc từ những con chim yến tự nhiên, thu hoạch có chọn lọc để bảo vệ môi trường sinh thái, qua đó gìn giữ nguồn tài nguyên quý giá cho các thế hệ mai sau.
+      </p>
+      <p>
+        Với hơn <strong>18 loại axit amin</strong> và <strong>30 nguyên tố vi lượng</strong>, yến sào Vin Nest là người bạn đồng hành lý tưởng trên hành trình chăm sóc sức khoẻ và làn da của bạn.
+      </p>
+      <div class="about-stats">
+        <div class="stat-item">
+          <span class="stat-number">18+</span>
+          <div class="stat-label">Loại Axit Amin</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">30+</span>
+          <div class="stat-label">Nguyên Tố Vi Lượng</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <div class="stat-label">Yến Thiên Nhiên</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2021</span>
+          <div class="stat-label">Thành Lập</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS SECTION -->
+<div class="products-section">
+  <div class="products-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Bộ Sưu Tập</div>
+      <h2 class="section-title">Sản Phẩm <em>Tinh Chọn</em></h2>
+      <div class="section-divider"><span class="divider-gem">◆</span></div>
+    </div>
+    <div class="products-grid">
+      <div class="product-card featured reveal">
+        <img src="https://yensaovinnest.com.vn/datafiles/33257/upload/images/NEW/RUAT%20LONG%20A%2B%20%284%29.jpg"
+             alt="Tổ Yến Rút Lông"
+             onerror="this.src='https://yensaovinnest.com.vn/datafiles/33257/upload/images/VNG%2002.png'"
+             style="height:100%;min-height:400px;">
+        <div class="product-overlay">
+          <div class="product-cat">Sản Phẩm Nổi Bật</div>
+          <div class="product-name">Tổ Yến Vin Nest<br>Nguyên Chất</div>
+          <div class="product-desc">Yến sào khánh hoà chọn lọc thủ công, giàu protein và khoáng chất thiết yếu cho sức khoẻ gia đình bạn.</div>
+          <a href="/san-pham/index.html" class="product-btn">Xem Sản Phẩm</a>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-1">
+        <img src="https://yensaovinnest.com.vn/datafiles/33257/upload/images/NEW/MAU%20%283%29.jpg"
+             alt="Dr.Vin Nest Đường Ăn Kiêng"
+             onerror="this.src='https://yensaovinnest.com.vn/datafiles/33257/upload/images/VNG%2002.png'">
+        <div class="product-overlay">
+          <div class="product-cat">Yến Chưng Sẵn</div>
+          <div class="product-name">Dr.Vin Nest<br>Đường Ăn Kiêng</div>
+          <div class="product-desc">30% yến · Đường Isomalt GI thấp, phù hợp cho người tiểu đường và đang ăn kiêng.</div>
+          <a href="/san-pham/index.html" class="product-btn">Xem Sản Phẩm</a>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-2">
+        <img src="https://yensaovinnest.com.vn/datafiles/33257/upload/images/NEW/MKT.jpg"
+             alt="Dr.Vin Nest Collagen Saffron"
+             onerror="this.src='https://yensaovinnest.com.vn/datafiles/33257/upload/images/VNG%2002.png'">
+        <div class="product-overlay">
+          <div class="product-cat">Làm Đẹp & Chống Lão Hoá</div>
+          <div class="product-name">Dr.Vin Nest<br>Collagen Saffron</div>
+          <div class="product-desc">30% yến · Collagen + Saffron — Bộ đôi vàng cho làn da tươi trẻ, chống lão hoá từ bên trong.</div>
+          <a href="/san-pham/index.html" class="product-btn">Xem Sản Phẩm</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;">
+      <a href="/san-pham/index.html" class="btn-outline">Xem Toàn Bộ Sản Phẩm</a>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="benefits-bg">
+  <div class="benefits-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Công Dụng Khoa Học</div>
+      <h2 class="section-title">Yến Sào — <em>Vì Sức Khoẻ</em> Của Bạn</h2>
+      <div class="section-divider"><span class="divider-gem">◆</span></div>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <span class="benefit-number">01</span>
+        <span class="benefit-icon">💪</span>
+        <div class="benefit-title">Tăng Cường Miễn Dịch</div>
+        <p class="benefit-text">Yến sào chứa đa dạng axit amin thiết yếu giúp tăng cường hệ miễn dịch, bảo vệ cơ thể khỏi các tác nhân gây bệnh.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-1">
+        <span class="benefit-number">02</span>
+        <span class="benefit-icon">✨</span>
+        <div class="benefit-title">Làm Đẹp Da</div>
+        <p class="benefit-text">Hơn 30 nguyên tố vi lượng và collagen tự nhiên nuôi dưỡng da từ bên trong, giúp da sáng mịn và chống lão hoá hiệu quả.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <span class="benefit-number">03</span>
+        <span class="benefit-icon">🧒</span>
+        <div class="benefit-title">Bổ Sung Cho Trẻ Em</div>
+        <p class="benefit-text">Nguồn dinh dưỡng quý giá hỗ trợ phát triển toàn diện cho trẻ, được nhiều bà mẹ Việt tin dùng.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-1">
+        <span class="benefit-number">04</span>
+        <span class="benefit-icon">🌿</span>
+        <div class="benefit-title">Hỗ Trợ Tiêu Hoá</div>
+        <p class="benefit-text">Cải thiện hệ tiêu hoá, tăng khả năng hấp thụ dinh dưỡng, giúp cơ thể khoẻ mạnh từ căn bản.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <span class="benefit-number">05</span>
+        <span class="benefit-icon">👴</span>
+        <div class="benefit-title">Dành Cho Người Cao Tuổi</div>
+        <p class="benefit-text">Bồi bổ thể trạng, phục hồi sau bệnh tật, tăng cường chức năng thận và cải thiện chất lượng giấc ngủ.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <span class="benefit-number">06</span>
+        <span class="benefit-icon">🧘</span>
+        <div class="benefit-title">Phù Hợp Người Ăn Chay</div>
+        <p class="benefit-text">Tổ yến không có thành phần cấu tạo như động vật, không qua giết mổ — người ăn chay có thể sử dụng bình thường.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG -->
+<div class="blog-section">
+  <div class="blog-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Kiến Thức & Tin Tức</div>
+      <h2 class="section-title">Từ <em>Chuyên Gia</em> Vin Nest</h2>
+      <div class="section-divider"><span class="divider-gem">◆</span></div>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card featured reveal">
+        <img class="blog-card-img"
+             src="https://yensaovinnest.com.vn/datafiles/33257/upload/thumb_files/yen-hu-chung-san-loai-nao-tot.png"
+             alt="Yến hũ chưng sẵn loại nào tốt?"
+             onerror="this.src='https://yensaovinnest.com.vn/datafiles/33257/upload/images/VNG%2002.png'">
+        <div class="blog-card-body">
+          <div class="blog-tag">Hướng Dẫn Chọn Mua</div>
+          <div class="blog-title">Yến hũ chưng sẵn loại nào tốt? Tiêu chí đánh giá từ A đến Z</div>
+          <p class="blog-excerpt">Hiện nay trên thị trường có rất nhiều yến sào chưng sẵn làm người tiêu dùng phân vân. Để trả lời câu hỏi này cần dựa vào nhu cầu và dinh dưỡng yến sào mang lại — cùng theo dõi bài viết này.</p>
+          <a href="/index.html" class="blog-link">Xem thêm →</a>
+        </div>
+      </div>
+      <div class="blog-card reveal reveal-delay-1">
+        <img class="blog-card-img"
+             src="https://yensaovinnest.com.vn/datafiles/33257/upload/thumb_files/Dr_vinnest.png"
+             alt="Yến hũ chưng sẵn có tốt không?"
+             onerror="this.src='https://yensaovinnest.com.vn/datafiles/33257/upload/images/VNG%2002.png'">
+        <div class="blog-card-body">
+          <div class="blog-tag">Kiến Thức Yến Sào</div>
+          <div class="blog-title">Yến hũ chưng sẵn có tốt như yến tổ không?</div>
+          <p class="blog-excerpt">Giải đáp các câu hỏi thường gặp của người tiêu dùng khi quan tâm đến sản phẩm yến hũ chưng sẵn từ Dr.Vin Nest.</p>
+          <a href="/index.html" class="blog-link">Xem thêm →</a>
+        </div>
+      </div>
+      <div class="blog-card reveal reveal-delay-2">
+        <img class="blog-card-img"
+             src="https://yensaovinnest.com.vn/datafiles/33257/upload/thumb_images/2022/MAAU%20%2816%29.JPG"
+             alt="Phân biệt tổ yến có đường"
+             onerror="this.src='https://yensaovinnest.com.vn/datafiles/33257/upload/images/VNG%2002.png'">
+        <div class="blog-card-body">
+          <div class="blog-tag">Cảnh Báo Người Tiêu Dùng</div>
+          <div class="blog-title">Phân biệt tổ yến có đường và chất độn bằng mẹo cực đơn giản</div>
+          <p class="blog-excerpt">Tình trạng tổ yến độn thêm chất phụ gia đang rất phổ biến — đừng để mất tiền oan uổng và gây hại cho sức khỏe.</p>
+          <a href="/index.html" class="blog-link">Xem thêm →</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;" class="reveal">
+      <a href="/tin-tuc/index.html" class="btn-outline">Xem Tất Cả Bài Viết</a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-inner reveal">
+    <div class="section-eyebrow" style="justify-content:center;margin-bottom:24px;">Đặt Hàng Ngay Hôm Nay</div>
+    <h2 class="cta-title">Khởi Đầu Hành Trình<br><em>Chăm Sóc Sức Khoẻ</em></h2>
+    <p class="cta-sub">
+      Tặng cho bản thân và gia đình những tinh tuý tốt nhất từ thiên nhiên.<br>
+      Giao hàng toàn quốc — Hỗ trợ 24/7.
+    </p>
+    <div class="cta-buttons">
+      <a href="/san-pham/index.html" class="btn-primary">Mua Sắm Ngay</a>
+      <a href="tel:0783332793" class="btn-outline">Gọi Tư Vấn: 078 333 27 93</a>
+    </div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter-bg">
+  <div class="newsletter-inner reveal">
+    <div class="newsletter-text">
+      <h3>Đăng Ký Nhận Tin Ưu Đãi</h3>
+      <p>Nhận ngay thông tin khuyến mãi và kiến thức sức khoẻ từ Vin Nest</p>
+    </div>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Nhập địa chỉ email của bạn...">
+      <button type="button">Đăng Ký</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-wrap" style="margin-bottom:16px;">
+        <span class="logo-vin">VIN NEST</span>
+        <span class="logo-sub">Yến Sào Khánh Hoà · Phú Yên</span>
+      </div>
+      <p class="footer-tagline">
+        "Thiên Nhiên – Thuần Khiết – Tận Tâm.<br>
+        Tổ yến cho tổ ấm trọn vẹn."
+      </p>
+      <div class="footer-contact-item">
+        <span class="contact-icon">📍</span>
+        <span>Tòa nhà SSO Business Center, 108 Trần Đình Xu, P. Nguyễn Cư Trinh, Q.1, TP.HCM</span>
+      </div>
+      <div class="footer-contact-item">
+        <span class="contact-icon">📞</span>
+        <a href="tel:0783332793" style="color:inherit;text-decoration:none;">078 333 27 93</a>
+      </div>
+      <div class="footer-contact-item">
+        <span class="contact-icon">✉</span>
+        <a href="mailto:vinnest.vn@gmail.com" style="color:inherit;text-decoration:none;">vinnest.vn@gmail.com</a>
+      </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/vinnest.vn" class="social-link" target="_blank">f</a>
+        <a href="https://zalo.me/0783332793" class="social-link" target="_blank">Z</a>
+        <a href="https://www.instagram.com/yensaovinnest/" class="social-link" target="_blank">ig</a>
+        <a href="https://www.tiktok.com/@vin.nest" class="social-link" target="_blank">tt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Sản Phẩm</h4>
+      <ul class="footer-links">
+        <li><a href="/san-pham/index.html">Tổ Yến Thô</a></li>
+        <li><a href="/san-pham/index.html">Yến Rút Lông</a></li>
+        <li><a href="/san-pham/index.html">Dr.Vin Nest Đường Ăn Kiêng</a></li>
+        <li><a href="/san-pham/index.html">Dr.Vin Nest Collagen Saffron</a></li>
+        <li><a href="/san-pham/index.html">Sản Phẩm Mới</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Chính Sách</h4>
+      <ul class="footer-links">
+        <li><a href="/index.html">Chính Sách Vận Chuyển</a></li>
+        <li><a href="/index.html">Chính Sách Đổi Trả</a></li>
+        <li><a href="/index.html">Chính Sách Bảo Mật</a></li>
+        <li><a href="/index.html">Điều Khoản Dịch Vụ</a></li>
+        <li><a href="/index.html">Hướng Dẫn Mua Hàng</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Tìm Hiểu Thêm</h4>
+      <ul class="footer-links">
+        <li><a href="/gioi-thieu/index.html">Về Vin Nest</a></li>
+        <li><a href="/tin-tuc/index.html">Blog & Kiến Thức</a></li>
+        <li><a href="/index.html">Công Dụng Khoa Học</a></li>
+        <li><a href="/index.html">Giá Trị Dinh Dưỡng</a></li>
+        <li><a href="/lien-he/index.html">Liên Hệ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 CÔNG TY TNHH VIN NEST · MST: 0316816034</span>
+    <div class="footer-cert">
+      <span>◆</span>
+      <span>GPDKKD Cấp Lần Đầu 17/04/2021</span>
+      <span>◆</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>

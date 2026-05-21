@@ -1,0 +1,70 @@
+backend:
+  name: github
+  repo: GITHUB_USERNAME/vinnest-website
+  branch: main
+  base_url: https://NETLIFY_SITE_NAME.netlify.app
+
+media_folder: "assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+locale: 'vi'
+
+collections:
+  - name: "tin-tuc"
+    label: "📰 Tin Tức & Blog"
+    folder: "_tin-tuc"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tiêu Đề", name: "title", widget: "string" }
+      - { label: "Danh Mục", name: "tag", widget: "select",
+          options: ["Hướng Dẫn Chọn Mua","Kiến Thức Yến Sào","Cảnh Báo Tiêu Dùng","Khoa Học & Dinh Dưỡng","Sức Khoẻ","Giải Đáp Thắc Mắc","Thai Kỳ","Dinh Dưỡng Trẻ Em","Hướng Dẫn Thực Hành"] }
+      - { label: "Tóm Tắt", name: "excerpt", widget: "text" }
+      - { label: "Ảnh Đại Diện", name: "thumbnail", widget: "image", required: false }
+      - { label: "Nội Dung", name: "body", widget: "markdown" }
+      - { label: "Ngày Đăng", name: "date", widget: "datetime" }
+
+  - name: "san-pham"
+    label: "🛒 Sản Phẩm"
+    folder: "_san-pham"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tên Sản Phẩm", name: "title", widget: "string" }
+      - { label: "Danh Mục", name: "category", widget: "string" }
+      - { label: "Mô Tả Ngắn", name: "description", widget: "text" }
+      - { label: "Ảnh Sản Phẩm", name: "image", widget: "image", required: false }
+      - { label: "Nội Dung Chi Tiết", name: "body", widget: "markdown" }
+      - { label: "Giá / Liên Hệ", name: "price", widget: "string", default: "Liên hệ để báo giá" }
+
+  - name: "cong-dung"
+    label: "💚 Công Dụng"
+    folder: "_cong-dung"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tiêu Đề", name: "title", widget: "string" }
+      - { label: "Chủ Đề", name: "eyebrow", widget: "string" }
+      - { label: "Nội Dung", name: "body", widget: "markdown" }
+
+  - name: "settings"
+    label: "⚙️ Cài Đặt Website"
+    files:
+      - label: "Thông Tin Liên Hệ"
+        name: "contact"
+        file: "_data/contact.yml"
+        fields:
+          - { label: "Số Điện Thoại", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Địa Chỉ", name: "address", widget: "string" }
+          - { label: "Facebook URL", name: "facebook", widget: "string" }
+          - { label: "Zalo URL", name: "zalo", widget: "string" }
+          - { label: "Instagram URL", name: "instagram", widget: "string" }
+          - { label: "TikTok URL", name: "tiktok", widget: "string" }
+      - label: "Thông Tin Trang Chủ"
+        name: "homepage"
+        file: "_data/homepage.yml"
+        fields:
+          - { label: "Tiêu Đề Hero", name: "hero_title", widget: "string" }
+          - { label: "Phụ Đề Hero", name: "hero_subtitle", widget: "text" }
+          - { label: "Ảnh Hero", name: "hero_image", widget: "image", required: false }
