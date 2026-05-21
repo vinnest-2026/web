@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: GITHUB_USERNAME/vinnest-website
+  repo: vinnest-2026/web
   branch: main
-  base_url: https://NETLIFY_SITE_NAME.netlify.app
+  base_url: https://clever-praline-afa4d3.netlify.app
 
 media_folder: "assets/img/uploads"
 public_folder: "/assets/img/uploads"
