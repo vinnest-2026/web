@@ -4,17 +4,16 @@ backend:
   branch: main
   api_root: https://api.github.com
 
+# Đã sửa lại đường dẫn lưu ảnh chui đúng vào kho
 media_folder: "vinnest_with_cms/assets/img/uploads"
 public_folder: "/assets/img/uploads"
 
 locale: 'vi'
 
 collections:
-
-  # ── TIN TỨC ──────────────────────────────────────────
   - name: "tin-tuc"
     label: "📰 Tin Tức & Blog"
-    folder: "_tin-tuc"
+    folder: "vinnest_with_cms/tin-tuc" # Đã sửa đường dẫn
     create: true
     slug: "{{slug}}"
     fields:
@@ -26,10 +25,9 @@ collections:
       - { label: "Nội Dung", name: "body", widget: "markdown" }
       - { label: "Ngày Đăng", name: "date", widget: "datetime" }
 
-  # ── SẢN PHẨM ─────────────────────────────────────────
   - name: "san-pham"
     label: "🛒 Sản Phẩm"
-    folder: "_san-pham"
+    folder: "vinnest_with_cms/san-pham" # Đã sửa đường dẫn
     create: true
     slug: "{{slug}}"
     fields:
@@ -38,12 +36,11 @@ collections:
       - { label: "Mô Tả Ngắn", name: "description", widget: "text" }
       - { label: "Ảnh Sản Phẩm", name: "image", widget: "image", required: false }
       - { label: "Nội Dung Chi Tiết", name: "body", widget: "markdown" }
-      - { label: "Giá", name: "price", widget: "string", default: "Liên hệ để báo giá" }
+      - { label: "Giá / Liên Hệ", name: "price", widget: "string", default: "Liên hệ để báo giá" }
 
-  # ── CÔNG DỤNG ─────────────────────────────────────────
   - name: "cong-dung"
     label: "💚 Công Dụng"
-    folder: "_cong-dung"
+    folder: "vinnest_with_cms/cong-dung" # Đã sửa đường dẫn
     create: true
     slug: "{{slug}}"
     fields:
@@ -51,14 +48,12 @@ collections:
       - { label: "Chủ Đề", name: "eyebrow", widget: "string" }
       - { label: "Nội Dung", name: "body", widget: "markdown" }
 
-  # ── CÀI ĐẶT WEBSITE ───────────────────────────────────
   - name: "settings"
     label: "⚙️ Cài Đặt Website"
     files:
-
-      - label: "📞 Thông Tin Liên Hệ"
+      - label: "Thông Tin Liên Hệ"
         name: "contact"
-        file: "_data/contact.yml"
+        file: "vinnest_with_cms/_data/contact.yml" # Đã sửa đường dẫn
         fields:
           - { label: "Số Điện Thoại", name: "phone", widget: "string" }
           - { label: "Email", name: "email", widget: "string" }
@@ -67,90 +62,10 @@ collections:
           - { label: "Zalo URL", name: "zalo", widget: "string" }
           - { label: "Instagram URL", name: "instagram", widget: "string" }
           - { label: "TikTok URL", name: "tiktok", widget: "string" }
-
-      - label: "🏠 Trang Chủ — Hero"
+      - label: "Thông Tin Trang Chủ"
         name: "homepage"
-        file: "_data/homepage.yml"
+        file: "vinnest_with_cms/_data/homepage.yml" # Đã sửa đường dẫn
         fields:
-          - { label: "Tiêu Đề Dòng 1", name: "hero_line1", widget: "string" }
-          - { label: "Tiêu Đề Dòng 2 (màu vàng)", name: "hero_line2", widget: "string" }
-          - { label: "Tiêu Đề Dòng 3", name: "hero_line3", widget: "string" }
-          - { label: "Câu Tagline", name: "hero_tagline", widget: "text" }
-          - { label: "Ảnh Hero (cô gái)", name: "hero_image", widget: "image", required: false }
-
-      - label: "🏢 Trang Giới Thiệu"
-        name: "gioi-thieu"
-        file: "_data/gioi-thieu.yml"
-        fields:
-          - { label: "Tiêu Đề Chính", name: "title", widget: "string" }
-          - { label: "Đoạn Mở Đầu", name: "intro", widget: "text" }
-          - { label: "Đoạn 2", name: "para2", widget: "text" }
-          - { label: "Đoạn 3", name: "para3", widget: "text" }
-          - { label: "Ảnh Chính", name: "image_main", widget: "image", required: false }
-          - { label: "Ảnh Phụ", name: "image_accent", widget: "image", required: false }
-          - { label: "Số Năm KN", name: "stat_years", widget: "string", default: "3+" }
-          - { label: "Stat Đền Bù", name: "stat_compensation", widget: "string", default: "10×" }
-
-      - label: "📬 Trang Liên Hệ"
-        name: "lien-he"
-        file: "_data/lien-he.yml"
-        fields:
-          - { label: "Tiêu Đề", name: "title", widget: "string" }
-          - { label: "Mô Tả", name: "description", widget: "text" }
-          - { label: "Giờ Làm Việc", name: "working_hours", widget: "string" }
-
-      - label: "🚚 Chính Sách Vận Chuyển"
-        name: "cs-van-chuyen"
-        file: "_data/cs-van-chuyen.yml"
-        fields:
-          - { label: "Tiêu Đề", name: "title", widget: "string" }
-          - { label: "Nội Dung", name: "body", widget: "markdown" }
-
-      - label: "↩️ Chính Sách Đổi Trả"
-        name: "cs-doi-tra"
-        file: "_data/cs-doi-tra.yml"
-        fields:
-          - { label: "Tiêu Đề", name: "title", widget: "string" }
-          - { label: "Nội Dung", name: "body", widget: "markdown" }
-
-      - label: "🔒 Chính Sách Bảo Mật"
-        name: "cs-bao-mat"
-        file: "_data/cs-bao-mat.yml"
-        fields:
-          - { label: "Tiêu Đề", name: "title", widget: "string" }
-          - { label: "Nội Dung", name: "body", widget: "markdown" }
-
-      - label: "📋 Điều Khoản Dịch Vụ"
-        name: "dieu-khoan"
-        file: "_data/dieu-khoan.yml"
-        fields:
-          - { label: "Tiêu Đề", name: "title", widget: "string" }
-          - { label: "Nội Dung", name: "body", widget: "markdown" }
-
-      - label: "📖 Hướng Dẫn Mua Hàng"
-        name: "hd-mua-hang"
-        file: "_data/hd-mua-hang.yml"
-        fields:
-          - { label: "Tiêu Đề", name: "title", widget: "string" }
-          - { label: "Nội Dung", name: "body", widget: "markdown" }
-
-      - label: "🍲 Hướng Dẫn Chế Biến"
-        name: "hd-che-bien"
-        file: "_data/hd-che-bien.yml"
-        fields:
-          - { label: "Tiêu Đề", name: "title", widget: "string" }
-          - { label: "Nội Dung", name: "body", widget: "markdown" }
-
-      - label: "💊 Hướng Dẫn Sử Dụng"
-        name: "hd-su-dung"
-        file: "_data/hd-su-dung.yml"
-        fields:
-          - { label: "Tiêu Đề", name: "title", widget: "string" }
-          - { label: "Nội Dung", name: "body", widget: "markdown" }
-
-      - label: "📦 Hướng Dẫn Bảo Quản"
-        name: "hd-bao-quan"
-        file: "_data/hd-bao-quan.yml"
-        fields:
-          - { label: "Tiêu Đề", name: "title", widget: "string" }
-          - { label: "Nội Dung", name: "body", widget: "markdown" }
+          - { label: "Tiêu Đề Hero", name: "hero_title", widget: "string" }
+          - { label: "Phụ Đề Hero", name: "hero_subtitle", widget: "text" }
+          - { label: "Ảnh Hero", name: "hero_image", widget: "image", required: false }
